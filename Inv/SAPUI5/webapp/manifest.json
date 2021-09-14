@@ -1,5 +1,5 @@
 {
-  "_version": "1.1.0",
+  "_version": "1.12.0",
   "sap.app": {
     "id": "alfa04.SAPUI5",
     "type": "application",
@@ -11,6 +11,10 @@
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "ach": "ach",
+    "sourceTemplate": {
+      "id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+      "version": "1.40.12"
+    },
     "dataSources": {
       "mainService": {
         "uri": "/Northwind/V2/Northwind/Northwind.svc/",
@@ -25,7 +29,7 @@
   "sap.ui": {
     "technology": "UI5",
     "icons": {
-      "icon": "sap-icon://task",
+      "icon": "",
       "favIcon": "",
       "phone": "",
       "phone@2": "",
@@ -47,7 +51,7 @@
       "id": "App"
     },
     "dependencies": {
-      "minUI5Version": "1.93.0",
+      "minUI5Version": "1.60.1",
       "libs": {
         "sap.ui.core": {},
         "sap.m": {},
@@ -64,10 +68,6 @@
         "settings": {
           "bundleName": "alfa04.SAPUI5.i18n.i18n"
         }
-      },
-      "invoices": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "Invoices.json"
       },
       "northwind": {
         "dataSource": "mainService",

@@ -1,0 +1,56 @@
+_schema-version: "3.2"
+ID: Inv
+version: 0.0.1
+modules:
+- name: inv-approuter
+  type: approuter.nodejs
+  path: inv-approuter
+  requires:
+  - name: Inv_html_repo_runtime
+  - name: dest_Inv
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: Inv_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: Inv_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - SAPUI5-content.zip
+      name: SAPUI5
+      target-path: resources/
+- name: SAPUI5
+  type: html5
+  path: SAPUI5
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: Inv_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: Inv_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: dest_Inv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install

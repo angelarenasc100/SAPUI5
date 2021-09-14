@@ -8,11 +8,11 @@
   ],
   "configurations": [
     {
-      "name": "Start sapui5",
+      "name": "Start inv",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "cwd": "${workspaceFolder}/sapui5",
+      "cwd": "${workspaceFolder}/inv",
       "windows": {
         "runtimeExecutable": "npm.cmd"
       },
@@ -25,14 +25,14 @@
       "port": 9229,
       "env": {
         "DEBUG": "--inspect",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/Invoices/sapui5\"}"
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/inv\"}"
       }
     },
     {
-      "name": "Start sapui5 Mock",
+      "name": "Start inv Mock",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/sapui5",
+      "cwd": "${workspaceFolder}/inv",
       "runtimeExecutable": "npm",
       "windows": {
         "runtimeExecutable": "npm.cmd"
@@ -45,14 +45,14 @@
       "internalConsoleOptions": "neverOpen",
       "port": 9229,
       "env": {
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/Invoices/sapui5\"}"
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/inv\"}"
       }
     },
     {
-      "name": "Start sapui5 Local",
+      "name": "Start inv Local",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/sapui5",
+      "cwd": "${workspaceFolder}/inv",
       "runtimeExecutable": "npm",
       "windows": {
         "runtimeExecutable": "npm.cmd"
@@ -65,39 +65,28 @@
       "internalConsoleOptions": "neverOpen",
       "port": 9229,
       "env": {
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/Invoices/sapui5\"}"
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/inv\"}"
       }
     },
     {
-      "name": "SAPUI5",
-      "cwd": "${workspaceFolder}/SAPUI5",
-      "runtimeArgs": [
-        "run-script",
-        "start"
-      ],
+      "name": "Run Inv-SAPUI5",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "npm",
+      "program": "${workspaceFolder}/Inv/inv-approuter/node_modules/@sap/html5-repo-mock/index.js",
       "args": [
-        "--",
+        "--standalone",
+        "/alfa04SAPUI5/index.html",
         "--ui5",
-        "--backendConfig",
-        "[{\"path\":\"/sap\",\"destination\":\"Northwind\"}]"
+        "{\"version\":\".\"}"
       ],
-      "windows": {
-        "runtimeExecutable": "npm.cmd",
-        "args": [
-          "--",
-          "--ui5",
-          "--backendConfig",
-          "\"[{\\\"path\\\":\\\"/sap\\\",\\\"destination\\\":\\\"Northwind\\\"}]\""
-        ]
-      },
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
+      "cwd": "${workspaceFolder}/Inv/SAPUI5",
       "env": {
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/Invoices/SAPUI5\"}"
-      }
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
+        "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/Inv/SAPUI5\"}"
+      },
+      "envFile": "${workspaceFolder}/Inv/SAPUI5/.env1",
+      "preLaunchTask": "Build Inv"
     }
   ],
   "compounds": [],
