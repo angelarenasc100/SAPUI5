@@ -40,6 +40,46 @@
       },
       "envFile": "${workspaceFolder}/SAPUI5/.env6",
       "preLaunchTask": "Build Inv"
+    },
+    {
+      "name": "Run Test Inv-SAPUI5",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/inv-approuter/node_modules/@sap/html5-repo-mock/index.js",
+      "args": [
+        "--standalone",
+        "/alfa04SAPUI5/test/unit/unitTests.qunit.html",
+        "--ui5",
+        "{\"version\":\".\"}"
+      ],
+      "cwd": "${workspaceFolder}/SAPUI5",
+      "env": {
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
+        "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/Inv/SAPUI5\"}"
+      },
+      "envFile": "${workspaceFolder}/SAPUI5/.env8",
+      "preLaunchTask": "Build Inv"
+    },
+    {
+      "name": "Run Integration Test Inv-SAPUI5",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/inv-approuter/node_modules/@sap/html5-repo-mock/index.js",
+      "args": [
+        "--standalone",
+        "/alfa04SAPUI5/test/integration/opaTests.qunit.html",
+        "--ui5",
+        "{\"version\":\".\"}"
+      ],
+      "cwd": "${workspaceFolder}/SAPUI5",
+      "env": {
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
+        "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/Inv/SAPUI5\"}"
+      },
+      "envFile": "${workspaceFolder}/SAPUI5/.env9",
+      "preLaunchTask": "Build Inv"
     }
   ]
 }

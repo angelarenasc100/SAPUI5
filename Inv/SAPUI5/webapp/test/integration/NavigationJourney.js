@@ -1,21 +1,38 @@
+// @ts-nocheck
 	/*global QUnit*/
 
 	sap.ui.define([
+        "alfa04/SAPUI5/localService/mockserver",
 		"sap/ui/test/opaQunit",
-		"./pages/App"
-	], function (opaTest) {
+		"./pages/HelloPanel"
+    ], 
+    /**
+     * 
+     * @param {typeof sap.ui.test.opaQunit} opaQunit
+     */
+    function (mockserver, opaQunit) {
 		"use strict";
 
-		QUnit.module("Navigation Journey");
+		QUnit.module("Navigation");
 
-		opaTest("Should see the initial page of the app", function (Given, When, Then) {
+		opaQunit("Should open the Hello Dialog", function (Given, When, Then) {
+            //Initialize the mock server
+            mockserver.init();
+
 			// Arrangements
-			Given.iStartMyApp();
+			Given.iStartMyUIComponent({
+                componentConfig: {
+                    name: "alfa04.SAPUI5"
+                }
+            });
 
-			// Assertions
-			Then.onTheAppPage.iShouldSeeTheApp();
+            // Actions
+            When.onTheAppPage.iSayHelloDialogButton();
 
-			//Cleanup
-			Then.iTeardownMyApp();
+            //Assertions
+            Then.onTheAppPage.iSeeTheHelloDialog();
+
+            //Cleanup
+            Then.iTeardownMyApp();
 		});
 	});
